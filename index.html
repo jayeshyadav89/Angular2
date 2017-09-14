@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <base href="/">
+    <title>Angular QuickStart</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="./Bootstrap/bootstrap-3.3.7-dist/css/bootstrap.min.css">
+
+    <!-- Polyfill(s) for older browsers -->
+    <script src="node_modules/core-js/client/shim.min.js"></script>
+
+    <script src="node_modules/zone.js/dist/zone.js"></script>
+    <script src="node_modules/systemjs/dist/system.src.js"></script>
+
+    <script src="systemjs.config.js"></script>
+    <script>
+      System.import('app').catch(function(err){ console.error(err); });
+    </script>
+  </head>
+
+  <body>
+    <!--h4>This is from html file.</h4-->
+    <!--event-binding></event-binding-->
+    <!--directives-demo></directives-demo-->
+    <!--attribute-directive></attribute-directive-->
+    <!--pipe-transformation></pipe-transformation-->
+    <!--template-driven-forms></template-driven-forms-->
+    <!--model-driven></model-driven-->
+    <!--form-builder></form-builder-->
+    <!--services-demo><services-demo-->
+    <!--services1></services1-->
+    <router-comp></router-comp>
+  </body>
+</html>
