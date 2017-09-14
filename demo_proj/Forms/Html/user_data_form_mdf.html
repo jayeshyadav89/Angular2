@@ -1,0 +1,40 @@
+<div class="container">
+    <h2>Model Driver Forms.User Data</h2>
+    <form [formGroup]="userData" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+            <label>First Name</label>
+            <input type="text" class="form-control" formControlName="fName">
+            <div *ngIf="userData.controls['fName'].hasError('required') 
+                    && (userData.controls['fName'].dirty || userData.controls['fName'].touched)" class="alert alert-danger">
+                Please Enter First Name.
+            </div>
+            <div *ngIf="userData.controls['fName'].hasError('minlength') 
+                    && (userData.controls['fName'].dirty || userData.controls['fName'].touched)" class="alert alert-danger">
+                Please Enter Atleast 4 Characters.
+            </div>
+        </div>
+        <div class="form-group">
+            <label>Last Name</label>
+            <input type="text" class="form-control" formControlName="lName">
+        </div>
+        <div class="form-group" formGroupName="address">
+            <div class="form-group">
+                <label>State</label>
+                <input type="text" class="form-control" formControlName="state">
+            </div>
+            <div class="form-group">
+                <label>City</label>
+                <input type="text" class="form-control" formControlName="city">
+            </div>
+            <div class="form-group">
+                <label>Postal Code</label>
+                <input type="text" class="form-control" formControlName="pCode">
+                <div *ngIf="userData.controls['address'].controls['pCode'].hasError('pattern') 
+                        && (userData.controls['address'].controls['pCode'].dirty || userData.controls['address'].controls['pCode'].touched)" class="alert alert-danger">
+                    Please Enter Valid Postal Code.
+                </div>
+            </div>
+        </div>
+        <button type="submit" [disabled]="userData.invalid" class="btn btn-primary">Submit</button>
+    </form>
+</div>

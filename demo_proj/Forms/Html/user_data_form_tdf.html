@@ -1,0 +1,42 @@
+<div class="container">
+    <h2>User Data Form</h2>
+    <form #userForm="ngForm" (ngSubmit)="onSubmit(userForm.value)" novalidate>
+        <div class="form-group">
+            <label>First Name</label>
+            <input type="text" #fNameRef="ngModel" class="form-control" required minlength="4" name="fName" ngModel>
+            <div *ngIf="fNameRef.errors && (fNameRef.touched || fNameRef.dirty)" class="alert alert-danger">
+               <div [hidden]="!fNameRef.errors.required">
+                    Please Enter First Name.
+               </div>
+               <div [hidden]="!fNameRef.errors.minlength">
+                    Please Enter Atleast 4 Character.
+               </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label>Last Name</label>
+            <input type="text" class="form-control" name="lName" ngModel>
+        </div>
+        <div ngModelGroup="Address">
+            <div class="form-group">
+                <label>City</label>
+                <input type="text" class="form-control" name="city" ngModel>
+            </div>
+            <div class="form-group">
+                <label>State</label>
+                <input type="text" class="form-control" name="state" ngModel> 
+            </div>
+            <div>
+                <label>Postal Code</label>
+                <input type="text" #zipCode="ngModel" pattern="^[1-9][0-9]{4}$" class="form-control" name="pCode" ngModel>
+                <div *ngIf="zipCode.errors && (zipCode.touched || zipCode.dirty)" class="alert alert-danger">
+                    <div [hidden]="!zipCode.errors.pattern">
+                        Postal Code Is Invalid
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br/>
+        <button [disabled]="userForm.invalid" type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
